@@ -1,118 +1,199 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  TouchableOpacity,
   View,
 } from 'react-native';
+import React from 'react';
+import Title from './src/components/Title';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import UserStoriesList from './src/components/UserStoriesList';
+import PostsList from './src/components/PostsList';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+export default function App() {
+  const userStories = [
+    {
+      firstName: 'Joseph',
+      id: '1',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Ben',
+      id: '2',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Olivia',
+      id: '3',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Kate',
+      id: '4',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Molly',
+      id: '5',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Chris',
+      id: '10',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Ann',
+      id: '6',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Max',
+      id: '7',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Emma',
+      id: '8',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'John',
+      id: '9',
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+  ];
+  const userPosts = [
+    {
+      firstName: 'Alison',
+      lastName: 'Becker',
+      location: 'New York, NY',
+      likes: 100,
+      comments: 23,
+      bookmarks: 12,
+      id: '1',
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Jennifer',
+      lastName: 'Becker',
+      location: 'Miami, FL',
+      likes: 1020,
+      comments: 233,
+      bookmarks: 112,
+      id: '2',
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Adam',
+      lastName: 'Spara',
+      location: 'Miami, NY',
+      likes: 34,
+      comments: 2,
+      bookmarks: 45,
+      id: '3',
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Emma',
+      lastName: 'Bright',
+      location: 'New York, NY',
+      likes: 1003,
+      comments: 223,
+      bookmarks: 13,
+      id: '4',
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Ella',
+      lastName: 'Stone',
+      location: 'New York, NY',
+      likes: 16,
+      comments: 53,
+      bookmarks: 63,
+      id: '5',
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+    {
+      firstName: 'Sam',
+      lastName: 'Stmith',
+      location: 'Buffalo, NY',
+      likes: 163,
+      comments: 523,
+      bookmarks: 23,
+      id: '6',
+      image: require('./assets/images/default_post.png'),
+      profileImage: require('./assets/images/default_profile.png'),
+    },
+  ];
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <SafeAreaView>
+      <View style={styles.mainContainer}>
+        <View style={styles.header}>
+          <Title title="Let's Explore" />
+          <TouchableOpacity style={styles.messageIcon}>
+            <FontAwesomeIcon icon={faEnvelope} color="#898DAE" />
+            <View style={styles.messageNmberContainer}>
+              <Text style={styles.messageNumber}>2</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
+
+        <View style={styles.userStoriesContainer}>
+          <UserStoriesList stories={userStories} />
+        </View>
+
+        <View style={styles.postsContainer}>
+          <PostsList posts={userPosts} />
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  mainContainer: {
+    marginHorizontal: 24,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  header: {
+    marginTop: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  messageIcon: {
+    padding: 14,
+    backgroundColor: '#e8e8e8',
+    borderRadius: 20,
   },
-  highlight: {
-    fontWeight: '700',
+  messageNmberContainer: {
+    backgroundColor: '#F35BAC',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+    position: 'absolute',
+    right: 10,
+    top: 10,
+  },
+  messageNumber: {
+    color: 'white',
+    fontSize: 6,
+    fontFamily: 'InterTight-Bold',
+  },
+  userStoriesContainer: {
+    marginTop: 20,
+  },
+  postsContainer: {
+    marginTop: 20,
   },
 });
-
-export default App;
