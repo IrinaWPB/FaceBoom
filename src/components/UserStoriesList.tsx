@@ -9,7 +9,7 @@ interface IUserStoriesListProps {
 
 export default function UserStoriesList(props: IUserStoriesListProps) {
   const userStoriesPageSize = 4;
-  const [userStoriesCurrentPage, setUserStoriesCurentPage] = useState(1);
+  const [userStoriesCurrentPage, setUserStoriesCurrentPage] = useState(1);
   const [userStoriesRenderedData, setUserStoriesRednderedData] = useState<
     StoryType[]
   >([]);
@@ -36,7 +36,7 @@ export default function UserStoriesList(props: IUserStoriesListProps) {
           userStoriesPageSize,
         );
         if (contentToAppend.length > 0) {
-          setUserStoriesCurentPage(currentPage => currentPage + 1);
+          setUserStoriesCurrentPage(currentPage => currentPage + 1);
           setUserStoriesRednderedData(prev => [...prev, ...contentToAppend]);
         }
         setIsLoadingUserStories(false);

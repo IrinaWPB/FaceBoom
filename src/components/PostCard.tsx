@@ -8,6 +8,11 @@ import {
   faComment,
   faHeart,
 } from '@fortawesome/free-regular-svg-icons';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from '../helpers/scaling';
 
 export type PostType = {
   firstName: string;
@@ -30,7 +35,10 @@ export default function PostCard(props: IPostProps) {
     <View style={styles.postContainer}>
       <View style={styles.postHeader}>
         <View style={styles.userInfo}>
-          <UserProfileImage profileImage={props.post.profileImage} size={45} />
+          <UserProfileImage
+            profileImage={props.post.profileImage}
+            size={horizontalScale(45)}
+          />
           <View style={styles.userCredetials}>
             <Text style={styles.userName}>
               {props.post.firstName} {props.post.lastName}
@@ -40,8 +48,8 @@ export default function PostCard(props: IPostProps) {
         </View>
         <FontAwesomeIcon icon={faEllipsisH} />
       </View>
-      <View style={styles.image}>
-        <Image source={props.post.image} />
+      <View style={styles.imageContainer}>
+        <Image source={props.post.image} style={styles.image} />
       </View>
       <View style={styles.postFooter}>
         <View style={styles.icons}>
@@ -63,8 +71,8 @@ export default function PostCard(props: IPostProps) {
 
 const styles = StyleSheet.create({
   postContainer: {
-    marginTop: 35,
-    paddingBottom: 10,
+    marginTop: verticalScale(20),
+    paddingBottom: verticalScale(5),
     borderBottomWidth: 1,
     borderBottomColor: '#EFF2F6',
   },
@@ -78,28 +86,32 @@ const styles = StyleSheet.create({
   },
   userCredetials: {
     justifyContent: 'center',
-    marginLeft: 10,
+    marginLeft: horizontalScale(10),
   },
   userName: {
     fontFamily: 'InterTight-Bold',
     color: '#000',
-    fontSize: 16,
+    fontSize: scaleFontSize(16),
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginTop: verticalScale(15),
   },
   image: {
-    alignItems: 'center',
-    marginTop: 25,
+    width: '95%',
+    borderRadius: 12,
   },
   postFooter: {
     flexDirection: 'row',
-    marginVertical: 20,
+    marginVertical: verticalScale(15),
   },
   icons: {
     flexDirection: 'row',
-    marginLeft: 15,
+    marginLeft: horizontalScale(15),
     alignItems: 'center',
   },
   iconText: {
-    marginLeft: 3,
+    marginLeft: horizontalScale(3),
     color: '#79869F',
   },
 });

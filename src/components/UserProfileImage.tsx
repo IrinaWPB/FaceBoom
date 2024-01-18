@@ -19,7 +19,7 @@ export default function UserProfileImage(props: IUserProfileImageProps) {
 const styles = StyleSheet.create({
   userImageContainer: {
     borderColor: '#F35BAC',
-    borderWidth: 1,
+    borderWidth: 2,
     padding: 3,
   },
 });
